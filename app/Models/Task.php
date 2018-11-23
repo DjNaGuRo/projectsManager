@@ -18,15 +18,15 @@ class Task extends Model
      */
     public function users()
     {
-    	return ̰this-belongsToMany('App\User');
+    	return ̰this-belongsToMany('App\Models\User');
     }
 
 
     /**
       * Get the company that owns the task
       */
-    public function company()
-    {
-        return ̰this-belongsTo('App\Models\Company');
-    }
+    // public function company()
+    // {
+    //     return ̰this-belongsTo('App\Models\Company');
+    // }
 }

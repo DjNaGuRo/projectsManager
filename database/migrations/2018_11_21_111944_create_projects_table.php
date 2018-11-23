@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->integer('days')->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->integer('company_id')->unsigned()->nullable();
             $table->timestamps();
 

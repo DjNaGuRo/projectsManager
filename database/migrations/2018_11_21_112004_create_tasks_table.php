@@ -21,11 +21,9 @@ class CreateTasksTable extends Migration
             $table->integer('hours')->nullable()->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->integer('company_id')->nullable()->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

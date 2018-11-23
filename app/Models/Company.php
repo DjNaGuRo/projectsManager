@@ -23,16 +23,22 @@ class Company extends Model
      */
     public function users()
     {
-    	return $this-›hasMany('App\User');
+    	return $this-›hasMany('App\Models\User');
     }
 
     /**
      * Get the tasks associated to the company
      */
+    // public function tasks()
+    // {
+    // 	return $this-›hasMany('App\Models\Task');
+    // }
+
+    /**
+     * Get the tasks for the company through the project model
+     */
     public function tasks()
     {
-    	return $this-›hasMany('App\Models\Task');
+        return ̰this-›hasManyThrough('App\Models\Task', 'App\Models\Project');
     }
-
-
 }
