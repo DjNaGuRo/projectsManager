@@ -18,7 +18,7 @@ class Project extends Model
      */
     public function users()
     {
-    	return ̰this-belongsToMany('App\Models\User');
+    	return $this-belongsToMany('App\Models\User');
     }
 
     /**
@@ -26,7 +26,7 @@ class Project extends Model
      */
     public function tasks()
     {
-    	return ̰this-›hasMany('App\Models\Task');
+    	return $this-›hasMany('App\Models\Task');
     }
 
     /**
@@ -34,6 +34,6 @@ class Project extends Model
      */
     public function company()
     {
-    	return ̰this-belongsTo('App\Models\Company');
+    	return $this-belongsTo('App\Models\Company');
     }
 }

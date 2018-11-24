@@ -15,7 +15,7 @@ class Company extends Model
      */
     public function projects()
     {
-    	return $this-›hasMany('App\Models\Project');
+    	return $this->hasMany('App\Models\Project');
     }
 
     /**
@@ -23,7 +23,7 @@ class Company extends Model
      */
     public function users()
     {
-    	return $this-›hasMany('App\Models\User');
+    	return $this->hasMany('App\Models\User');
     }
 
     /**
@@ -39,6 +39,6 @@ class Company extends Model
      */
     public function tasks()
     {
-        return ̰this-›hasManyThrough('App\Models\Task', 'App\Models\Project');
+        return $this->hasManyThrough('App\Models\Task', 'App\Models\Project');
     }
 }

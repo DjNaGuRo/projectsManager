@@ -14,7 +14,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        return redirect()->route('companies.index');
     }
 
     /**
@@ -46,7 +49,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        $company = Company::find($company->id); // Retrieve in database the Company related to the specified id
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -57,7 +61,9 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        $companyUpdate = Company::find($company->id);
+        // dd($company);
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -69,7 +75,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        dd('Welcome to upated');
     }
 
     /**

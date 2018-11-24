@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function projects()
     {
-        return $this-belongsToMany('App\Models\Project');
+        return $this->belongsToMany('App\Models\Project');
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function tasks()
     {
-        return $this-belongsToMany('App\Models\Task');
+        return $this->belongsToMany('App\Models\Task');
     }
 
     /**
@@ -49,7 +49,7 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this-belongsTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function comments()
