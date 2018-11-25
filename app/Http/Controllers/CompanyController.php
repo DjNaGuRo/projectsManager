@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use Illuminate\Http\Request;
+use App\Http\Requests\CompanyFormRequest;
 
 class CompanyController extends Controller
 {
@@ -32,13 +32,15 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CompanyFormRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyFormRequest $request)
     {
-        
-        return redirect()->route('companies.index');
+        $validatedInput = $request->validated();
+        Company::create($validatedInput);
+
+        return redirect()->route('companies.index')->withSuccess('Company created successfully');
     }
 
     /**
@@ -62,7 +64,6 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $companyUpdate = Company::find($company->id);
-        // dd($company);
         return view('companies.edit', compact('company'));
     }
 
@@ -73,9 +74,13 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyFormRequest $request, Company $company)
     {
-        dd('Welcome to upated');
+        // Retrieve validated input data ...
+        $validatedInput = $request->validated();
+
+        $company->update($validated);
+        return redirect()->route('companies.show', $company)->withSuccess('Company updated successfully');
     }
 
     /**
@@ -86,6 +91,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        if ($company->delete()) {
+            return redirect()->route('companies.index')->withSuccess('Company deleted successfully');
+        }
+        return back()->withInput()->withError('Company could not be deleted');
+        
     }
 }
